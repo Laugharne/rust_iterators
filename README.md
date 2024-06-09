@@ -80,14 +80,13 @@ fn main() {
     println!("{:?}", counter.next());
 
     let sum: u32 =
-        Counter::new()
-            .zip(Counter::new().skip(1))
-            .map(|(a, b)| a*b)
-            .filter(|x| x % 3 == 0)
+        Counter::new()                   // Counter
+            .zip(Counter::new().skip(1)) // impl Iterator<Item = (u32,u32)>
+            .map(|(a, b)| a*b)           // impl Iterator<Item = u32>
+            .filter(|x| x % 3 == 0)      // impl Iterator<Item = u32>
             .sum();
 
             println!("\n{:?}", sum);
 
 }
-
 ```
