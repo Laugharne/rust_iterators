@@ -1,9 +1,9 @@
 fn main() {
-	let vec_str = vec!["A", "B", "C"];
-	let mut vec_str_mut = vec!["A", "B", "C"];
+	let vec_str: Vec<&str> = vec!["A", "B", "C"];
+	let mut vec_str_mut: Vec<&str> = vec!["A", "B", "C"];
 
 	println!("\n> iter()");
-	vec_str.iter().for_each(|value| {
+	vec_str.iter().for_each(|value: &&str| {
 		println!("{}", value);
 	});
 
@@ -13,7 +13,7 @@ fn main() {
 	});
 
 	println!("\n> iter_mut()");
-	vec_str_mut.iter_mut().for_each(|value| {
+	vec_str_mut.iter_mut().for_each(|value: &mut &str| {
 		println!("{}", value);
 	});
 
@@ -32,9 +32,9 @@ fn main() {
 	println!("{:?}",vec_str.iter().enumerate().next());
 
 
-	let v1 = vec![1,2,3];
+	let v1: Vec<i32> = vec![1,2,3];
 	// map takes in a closure and creates an iterator wich close the closure over each elements in a sequence
-	let v2: Vec<_> = v1.iter().map(|x| x+1).collect();
+	let v2: Vec<_> = v1.iter().map(|x: &i32| x+1).collect();
 	println!("\nv1 = {:?}",v1);
 	println!("\n> collect()");
 	println!("v2 = {:?}",v2);
@@ -67,7 +67,7 @@ fn main() {
 
 	println!();
 
-	let mut counter = Counter::new();
+	let mut counter: Counter = Counter::new();
 
 	//let _ = counter.next();
 	println!("{:?}", counter.next());
