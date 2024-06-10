@@ -1,3 +1,4 @@
+### Rust
 
 ```rust
 fn main() {
@@ -89,4 +90,58 @@ fn main() {
             println!("\n{:?}", sum);
 
 }
+```
+
+### Output
+
+```bash
+❯ cargo r
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.05s
+     Running `target/debug/iterators`
+
+> iter()
+A
+B
+C
+
+> iter().enumerate()
+0       A
+1       B
+2       C
+
+> iter_mut()
+A
+B
+C
+
+> iter_mut().enumerate()
+0       A
+1       B
+2       C
+
+> vec_str
+["A", "B", "C"]
+
+> vec_str.iter()
+Iter(["A", "B", "C"])
+Some("A")
+
+> vec_str.iter().enumerate()
+Enumerate { iter: Iter(["A", "B", "C"]), count: 0 }
+Some((0, "A"))
+
+v1 = [1, 2, 3]
+
+> collect()
+v2 = [2, 3, 4]
+
+Some(1)
+Some(2)
+Some(3)
+Some(4)
+Some(5)
+None
+
+18
+
 ```
