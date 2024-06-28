@@ -24,13 +24,32 @@ fn main() {
 
 	println!("\n> vec_str");
 	println!("{:?}",vec_str);
+	
 	println!("\n> vec_str.iter()");
 	println!("{:?}",vec_str.iter());
 	println!("{:?}",vec_str.iter().next());
+	
 	println!("\n> vec_str.iter().enumerate()");
 	println!("{:?}",vec_str.iter().enumerate());
 	println!("{:?}",vec_str.iter().enumerate().next());
 
+	println!("\n> vec_str_mut.iter_mut().map()");
+	let r: Vec<_> = vec_str_mut.iter_mut().map(|x: &mut &str| {
+		"X"
+	}).collect();
+	println!("r = {:?}",r);
+
+	println!("\n> vec_str_mut.iter_mut().for_each()");
+	vec_str_mut.iter_mut().for_each( |x: &mut &str| {
+		*x = "Y";
+	});
+	println!("{:?}",vec_str_mut);
+
+	println!("\n> vec_str_mut.iter_mut().for_each()");
+	for x in vec_str_mut.iter_mut() {
+		*x = "Z";
+	}
+	println!("{:?}",vec_str_mut);
 
 	let v1: Vec<i32> = vec![1,2,3];
 	// map takes in a closure and creates an iterator wich close the closure over each elements in a sequence
