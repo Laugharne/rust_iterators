@@ -1,5 +1,5 @@
 fn main() {
-	let vec_str: Vec<&str> = vec!["A", "B", "C"];
+	let vec_str: Vec<&str>         = vec!["A", "B", "C"];
 	let mut vec_str_mut: Vec<&str> = vec!["A", "B", "C"];
 
 	println!("\n> iter()");
@@ -45,7 +45,7 @@ fn main() {
 	});
 	println!("{:?}",vec_str_mut);
 
-	println!("\n> vec_str_mut.iter_mut().for_each()");
+	println!("\n> for x in vec_str_mut.iter_mut()");
 	for x in vec_str_mut.iter_mut() {
 		*x = "Z";
 	}
