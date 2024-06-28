@@ -27,13 +27,32 @@ fn main() {
 
     println!("\n> vec_str");
     println!("{:?}",vec_str);
+    
     println!("\n> vec_str.iter()");
     println!("{:?}",vec_str.iter());
     println!("{:?}",vec_str.iter().next());
+    
     println!("\n> vec_str.iter().enumerate()");
     println!("{:?}",vec_str.iter().enumerate());
     println!("{:?}",vec_str.iter().enumerate().next());
 
+    println!("\n> vec_str_mut.iter_mut().map()");
+    let r: Vec<_> = vec_str_mut.iter_mut().map(|x: &mut &str| {
+        "X"
+    }).collect();
+    println!("r = {:?}",r);
+
+    println!("\n> vec_str_mut.iter_mut().for_each()");
+    vec_str_mut.iter_mut().for_each( |x: &mut &str| {
+        *x = "Y";
+    });
+    println!("{:?}",vec_str_mut);
+
+    println!("\n> vec_str_mut.iter_mut().for_each()");
+    for x in vec_str_mut.iter_mut() {
+        *x = "Z";
+    }
+    println!("{:?}",vec_str_mut);
 
     let v1: Vec<i32> = vec![1,2,3];
     // map takes in a closure and creates an iterator wich close the closure over each elements in a sequence
@@ -81,10 +100,10 @@ fn main() {
     println!("{:?}", counter.next());
 
     let sum: u32 =
-        Counter::new()                   // Counter
-            .zip(Counter::new().skip(1)) // impl Iterator<Item = (u32,u32)>
-            .map(|(a, b)| a*b)           // impl Iterator<Item = u32>
-            .filter(|x| x % 3 == 0)      // impl Iterator<Item = u32>
+        Counter::new()
+            .zip(Counter::new().skip(1))
+            .map(|(a, b)| a*b)
+            .filter(|x| x % 3 == 0)
             .sum();
 
             println!("\n{:?}", sum);
@@ -130,6 +149,15 @@ Some("A")
 Enumerate { iter: Iter(["A", "B", "C"]), count: 0 }
 Some((0, "A"))
 
+> vec_str_mut.iter_mut().map()
+r = ["X", "X", "X"]
+
+> vec_str_mut.iter_mut().for_each()
+["Y", "Y", "Y"]
+
+> vec_str_mut.iter_mut().for_each()
+["Z", "Z", "Z"]
+
 v1 = [1, 2, 3]
 
 > collect()
@@ -143,5 +171,4 @@ Some(5)
 None
 
 18
-
 ```
