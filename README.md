@@ -155,7 +155,7 @@ r = ["X", "X", "X"]
 > vec_str_mut.iter_mut().for_each()
 ["Y", "Y", "Y"]
 
-> vec_str_mut.iter_mut().for_each()
+> for x in vec_str_mut.iter_mut()
 ["Z", "Z", "Z"]
 
 v1 = [1, 2, 3]
